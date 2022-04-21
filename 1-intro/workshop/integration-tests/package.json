@@ -7,16 +7,17 @@
     "all": " node server.js & jest --watchAll --colors --coverage",
     "test": "jest --watchAll --colors --coverage",
     "server": "node server.js"
-
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.3.6",
     "jest": "^27.5.1"
   },
   "dependencies": {
     "ejs": "^3.1.2",
     "express": "^4.16.3",
-    "mongoose": "^5.2.7"
+    "mongoose": "^5.2.7",
+    "sinon": "^13.0.2"
   }
 }
