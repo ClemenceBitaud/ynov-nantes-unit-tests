@@ -1,3 +1,4 @@
+const { Demineur } = require("../src/demineur")
 describe("Demineur test", function() {
     it("première ligne entrée", function() {
         const demineur = new Demineur(2, 3)
