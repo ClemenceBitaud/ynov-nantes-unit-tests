@@ -24,7 +24,7 @@ describe("Demineur test", function() {
         });
     });
 
-    it("test nb mine présente > 1", function() {
+    it("test nb mine présente >= 1", function() {
         // When
         const demineur = new Demineur(4, 4);
 
@@ -36,6 +36,39 @@ describe("Demineur test", function() {
         });
 
         // Then
-        expect(countMine).toBeGreaterThan(1);
+        expect(countMine).toBeGreaterThan(0);
     });
+
+    it("test constructor exception m > 100", function() {
+        expect(() => { new Demineur(4, 105) }).toThrow(RangeError);
+    });
+
+    it("test constructor exception m < 0", function() {
+        expect(() => { new Demineur(4, -3) }).toThrow(RangeError);
+    });
+
+    it("test constructor exception m == 0", function() {
+        expect(() => { new Demineur(5, 0) }).toThrow(RangeError);
+    });
+
+    it("test constructor exception m == 101", function() {
+        expect(() => { new Demineur(4, 101) }).toThrow(RangeError);
+    });
+
+    it("test constructor exception n > 100", function() {
+        expect(() => { new Demineur(105, 5) }).toThrow(RangeError);
+    });
+
+    it("test constructor exception n < 0", function() {
+        expect(() => { new Demineur(-12, 5) }).toThrow(RangeError);
+    });
+
+    it("test constructor exception n == 0", function() {
+        expect(() => { new Demineur(0, 3) }).toThrow(RangeError);
+    });
+
+    it("test constructor exception n == 101", function() {
+        expect(() => { new Demineur(101, 5) }).toThrow(RangeError);
+    });
+
 });

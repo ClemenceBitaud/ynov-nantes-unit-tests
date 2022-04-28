@@ -1,10 +1,12 @@
 class Demineur {
     constructor(n, m){
+        if ( n <= 0 || n > 100 ) throw new RangeError("Le paramètre n doit être compris entre 1 et 100 inclus");
+        if ( m <= 0 || m > 100 ) throw new RangeError("Le paramètre m doit être compris entre 1 et 100 inclus");
         this.n = n;
         this.m = m;
         this.grille = [];
         this.generateGrille();
-        this.initGrille()
+        this.initGrille();
     }
 
     generateGrille() {
@@ -30,7 +32,6 @@ class Demineur {
         }
     }
 }
-
 
 module.exports = {
     Demineur
