@@ -23,4 +23,19 @@ describe("Demineur test", function() {
             expect(ligne.length).toBe(m);
         });
     });
+
+    it("test nb mine présente > 1", function() {
+        // When
+        const demineur = new Demineur(4, 4);
+
+        let countMine = 0;
+        demineur.grille.forEach(ligne => {
+            ligne.forEach(carre => {
+                if (carre === '*') countMine++;
+            });
+        });
+
+        // Then
+        expect(countMine).toBeGreaterThan(1);
+    });
 });
