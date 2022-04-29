@@ -40,3 +40,5 @@ mongoose.connect(DB_URI).then(() => {
   console.log('Listening on port: ' + PORT);
   app.listen(PORT);
 });
+
+module.exports = { app };
