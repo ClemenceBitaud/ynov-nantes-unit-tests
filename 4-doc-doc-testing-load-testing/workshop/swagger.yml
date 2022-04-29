@@ -1,0 +1,102 @@
+---
+swagger: "2.0"
+info:
+  description: "Simple and basic API description."
+  version: "1.0"
+  title: "API routes"
+host: "localhost:5000"
+
+tags:
+  - name: "todo"
+    description: "Tâche à faire"
+schemes:
+  - "https"
+paths:
+  /todo:
+    get:
+      tags:
+        - "todo"
+      summary: "Retourne la liste des TODO"
+      operationId: "getAllTodo"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Liste des TODO"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Todo"
+        "500":
+          description: "Erreur du côté serveur"
+    post:
+      tags:
+        - "todo"
+      summary: "Ajouter un TODO"
+      operationId: "postTodo"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Creation TODO"
+          required: true
+          schema:
+            $ref: "#/definitions/CreateTodo"
+      responses:
+        "200":
+          description: "TODO créé avec succés"
+          schema:
+            $ref: "#/definitions/Todo"
+        "400":
+          description: "Donneés manquantes"
+        "500":
+          description: "Erreur du côté serveur"
+  /todo/{id}:
+    patch:
+      tags:
+        - "todo"
+      summary: "Retourne un seul TODO"
+      operationId: "getTodo"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID du potentiel TODO"
+          required: true
+          type: "string"
+          default: 12
+      responses:
+        "200":
+          description: "TODO trouvée"
+          schema:
+            $ref: "#/definitions/Todo"
+        "400":
+          description: "Id non valide"
+        "404":
+          description: "TODO non trouvé"
+        "500":
+          description: "Erreur du côté serveur"
+definitions:
+  Todo:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      text:
+        type: "string"
+    xml:
+      name: "Todo"
+    example:
+      id: 1
+      text: "text"
+  CreateTodo:
+    type: "object"
+    properties:
+      text:
+        type: "string"
+    xml:
+      name: "createTodo"
+    example:
+      text: "text"
